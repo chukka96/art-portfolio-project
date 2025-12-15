@@ -1,77 +1,176 @@
+/* ===== GLOBAL ===== */
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
-    background: #0f172a;
+    background: linear-gradient(180deg, #020617, #0f172a);
     color: #e5e7eb;
 }
 
+/* ===== NAVBAR ===== */
 nav {
     background: #020617;
-    padding: 15px 40px;
+    padding: 16px 40px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 nav a {
     color: #38bdf8;
-    margin-left: 20px;
+    margin-left: 22px;
     text-decoration: none;
+    font-weight: 500;
 }
 
+nav a:hover {
+    color: #0ea5e9;
+}
+
+/* ===== LAYOUT ===== */
 .container {
     padding: 40px;
-}
-
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.page-title {
-    text-align: center;
-}
-
-h2 {
-    margin-top: 50px;
-    border-left: 4px solid #38bdf8;
-    padding-left: 10px;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #020617;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.card img, video {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.pdf {
-    text-align: center;
-    padding: 30px;
-}
-
-.upload-form {
-    max-width: 400px;
+    max-width: 1400px;
     margin: auto;
 }
 
-.upload-form input, .upload-form button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
+/* ===== HERO ===== */
+.hero {
+    text-align: center;
+    padding: 90px 20px;
 }
 
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #94a3b8;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 50px;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+h2 {
+    margin-top: 60px;
+    margin-bottom: 22px;
+    border-left: 4px solid #38bdf8;
+    padding-left: 14px;
+    color: #e5e7eb;
+    font-size: 22px;
+}
+
+/* ===== GALLERY GRID ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 26px;
+}
+
+/* ===== IMAGE & VIDEO CARDS ===== */
+.card {
+    background: linear-gradient(145deg, #020617, #020617dd);
+    padding: 14px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(56,189,248,0.25);
+}
+
+.card img,
+.card video {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* ===== CERTIFICATION CARDS ===== */
+.cert-card {
+    background: linear-gradient(145deg, #020617, #020617dd);
+    border-radius: 16px;
+    padding: 26px 22px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(56,189,248,0.3);
+}
+
+.cert-icon {
+    font-size: 42px;
+    margin-bottom: 14px;
+}
+
+.cert-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+
+.cert-btn {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 24px;
+    background: #38bdf8;
+    color: #020617;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.cert-btn:hover {
+    background: #0ea5e9;
+}
+
+/* ===== UPLOAD PAGE ===== */
+.upload-form {
+    max-width: 420px;
+    margin: auto;
+    background: #020617;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.upload-form input,
+.upload-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 14px;
+    border-radius: 8px;
+    border: none;
+}
+
+.upload-form button {
+    background: #38bdf8;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.upload-form button:hover {
+    background: #0ea5e9;
+}
+
+/* ===== NOTES ===== */
 .note {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 24px;
     color: #94a3b8;
+    font-size: 14px;
 }

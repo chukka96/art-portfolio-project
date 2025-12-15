@@ -4,28 +4,47 @@
 <h1 class="page-title">Gallery</h1>
 
 {% for section, files in gallery_data.items() %}
-<h2>{{ section }}</h2>
+
+<h2 class="section-title">{{ section }}</h2>
 
 <div class="gallery">
+
     {% for file in files %}
+
+        {# ===== VIDEOS (EDITS) ===== #}
         {% if file.endswith('.mp4') %}
+        <div class="card video-card">
             <video controls>
                 <source src="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}">
             </video>
+        </div>
 
+        {# ===== CERTIFICATIONS (PDF) ===== #}
         {% elif file.endswith('.pdf') %}
-            <div class="card pdf">
-                <a href="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}" target="_blank">
-                    📄 {{ file }}
-                </a>
+        <div class="cert-card">
+            <div class="cert-icon">📄</div>
+
+            <div class="cert-title">
+                {{ file.rsplit('.', 1)[0][:45] }}{% if file|length > 45 %}...{% endif %}
             </div>
 
+            <a class="cert-btn"
+               href="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}"
+               target="_blank">
+                View Certificate
+            </a>
+        </div>
+
+        {# ===== IMAGES (POSTERS) ===== #}
         {% else %}
-            <div class="card">
-                <img src="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}">
-            </div>
+        <div class="card image-card">
+            <img src="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}"
+                 alt="Artwork">
+        </div>
         {% endif %}
+
     {% endfor %}
+
 </div>
 
 {% endfor %}
