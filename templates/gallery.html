@@ -1,12 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Gallery</h2>
+
+<h1 style="text-align:center;">My Work</h1>
+
+{% for section, items in gallery_data.items() %}
+
+<h2 style="margin-top:50px;">{{ section }}</h2>
+
 <div class="gallery">
-    {% for art in artworks %}
+    {% for item in items %}
     <div class="card">
-        <img src="{{ url_for('static', filename='images/' + art.img) }}">
-        <h3>{{ art.title }}</h3>
+        <img src="{{ url_for('static', filename='images/' + item.img) }}" alt="{{ item.title }}">
+        <h3>{{ item.title }}</h3>
     </div>
     {% endfor %}
 </div>
+
+{% endfor %}
+
 {% endblock %}

@@ -10,12 +10,23 @@ def home():
 
 @app.route("/gallery")
 def gallery():
-    artworks = [
-        {"img": "art1.jpg", "title": "Abstract Flow"},
-        {"img": "art2.jpg", "title": "Cloud Dream"},
-        {"img": "art3.jpg", "title": "Azure Sky"}
-    ]
-    return render_template("gallery.html", artworks=artworks)
+    gallery_data = {
+        "Certifications": [
+            {"img": "cert1.jpg", "title": "AZ-104 Azure Administrator"},
+            {"img": "cert2.jpg", "title": "AZ-400 DevOps Engineer"}
+        ],
+        "Posters": [
+            {"img": "poster1.jpg", "title": "Event Poster"},
+            {"img": "poster2.jpg", "title": "Movie Poster"}
+        ],
+        "Edits": [
+            {"img": "edit1.jpg", "title": "Photo Manipulation"},
+            {"img": "edit2.jpg", "title": "Color Grading Edit"}
+        ]
+    }
+
+    return render_template("gallery.html", gallery_data=gallery_data)
+
 
 @app.route("/about")
 def about():
