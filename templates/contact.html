@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Contact Me</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% for category, msg in messages %}
+<p style="color:#22c55e;">{{ msg }}</p>
+{% endfor %}
+{% endwith %}
+
+<form method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+</form>
+{% endblock %}
