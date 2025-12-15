@@ -1,51 +1,67 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
 import os
+from flask import Flask, render_template, request, redirect, url_for
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.secret_key = "azure-portfolio-secret-key"
 
+# ---------------- CONFIG ----------------
+UPLOAD_BASE = "static/uploads"
+
+ALLOWED_EXTENSIONS = {
+    "posters": {"jpg", "jpeg", "png"},
+    "certifications": {"pdf"},
+    "edits": {"mp4"}
+}
+
+# Ensure folders exist
+for folder in ALLOWED_EXTENSIONS.keys():
+    os.makedirs(os.path.join(UPLOAD_BASE, folder), exist_ok=True)
+
+# ---------------- HELPERS ----------------
+def get_category(filename):
+    if "." not in filename:
+        return None
+    ext = filename.rsplit(".", 1)[1].lower()
+    for category, exts in ALLOWED_EXTENSIONS.items():
+        if ext in exts:
+            return category
+    return None
+
+# ---------------- ROUTES ----------------
 @app.route("/")
 def home():
     return render_template("index.html")
 
 @app.route("/gallery")
 def gallery():
-    gallery_data = {
-        "Certifications": [
-            {"img": "cert1.jpg", "title": "AZ-104 Azure Administrator"},
-            {"img": "cert2.jpg", "title": "AZ-400 DevOps Engineer"}
-        ],
-        "Posters": [
-            {"img": "poster1.jpg", "title": "Event Poster"},
-            {"img": "poster2.jpg", "title": "Movie Poster"}
-        ],
-        "Edits": [
-            {"img": "edit1.jpg", "title": "Photo Manipulation"},
-            {"img": "edit2.jpg", "title": "Color Grading Edit"}
-        ]
-    }
+    gallery_data = {}
+
+    for category in ALLOWED_EXTENSIONS.keys():
+        folder_path = os.path.join(UPLOAD_BASE, category)
+        files = os.listdir(folder_path) if os.path.exists(folder_path) else []
+        gallery_data[category.capitalize()] = files
 
     return render_template("gallery.html", gallery_data=gallery_data)
 
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
+@app.route("/upload", methods=["GET", "POST"])
+def upload():
     if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        message = request.form.get("message")
+        file = request.files.get("file")
+        if not file or file.filename == "":
+            return "No file selected", 400
 
-        # For now: print to logs (Azure Log Stream)
-        print(f"New Contact: {name} | {email} | {message}")
+        filename = secure_filename(file.filename)
+        category = get_category(filename)
 
-        flash("Thank you! Your message has been received.", "success")
-        return redirect(url_for("contact"))
+        if not category:
+            return "Unsupported file type", 400
 
-    return render_template("contact.html")
+        save_path = os.path.join(UPLOAD_BASE, category, filename)
+        file.save(save_path)
+
+        return redirect(url_for("gallery"))
+
+    return render_template("upload.html")
 
 if __name__ == "__main__":
     app.run()

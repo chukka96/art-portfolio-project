@@ -1,18 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 style="text-align:center;">My Work</h1>
+<h1 class="page-title">Gallery</h1>
 
-{% for section, items in gallery_data.items() %}
-
-<h2 style="margin-top:50px;">{{ section }}</h2>
+{% for section, files in gallery_data.items() %}
+<h2>{{ section }}</h2>
 
 <div class="gallery">
-    {% for item in items %}
-    <div class="card">
-        <img src="{{ url_for('static', filename='images/' + item.img) }}" alt="{{ item.title }}">
-        <h3>{{ item.title }}</h3>
-    </div>
+    {% for file in files %}
+        {% if file.endswith('.mp4') %}
+            <video controls>
+                <source src="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}">
+            </video>
+
+        {% elif file.endswith('.pdf') %}
+            <div class="card pdf">
+                <a href="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}" target="_blank">
+                    📄 {{ file }}
+                </a>
+            </div>
+
+        {% else %}
+            <div class="card">
+                <img src="{{ url_for('static', filename='uploads/' + section.lower() + '/' + file) }}">
+            </div>
+        {% endif %}
     {% endfor %}
 </div>
 

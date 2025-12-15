@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Upload Artwork</h1>
+
+<form method="POST" enctype="multipart/form-data" class="upload-form">
+    <input type="file" name="file" required>
+    <button type="submit">Upload</button>
+</form>
+
+<p class="note">
+JPG / PNG → Posters<br>
+PDF → Certifications<br>
+MP4 → Edits
+</p>
+
+{% endblock %}
