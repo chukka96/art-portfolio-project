@@ -164,6 +164,62 @@ h2 {
     border-radius: 12px;
 }
 
+/* ===== CERTIFICATIONS GRID ===== */
+.cert-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+/* ===== CERTIFICATION CARD ===== */
+.cert-card {
+    background: rgba(2, 6, 23, 0.55);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 26px 22px;
+    text-align: center;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 55px rgba(56,189,248,0.35);
+}
+
+.cert-icon {
+    font-size: 40px;
+    margin-bottom: 14px;
+}
+
+.cert-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+
+/* ===== CERT BUTTON ===== */
+.cert-btn {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 24px;
+    background: #38bdf8;
+    color: #020617;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cert-btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
+}
+
 /* ===== UPLOAD PAGE ===== */
 .upload-form {
     max-width: 420px;
@@ -239,5 +295,9 @@ h2 {
     .nav-card {
         width: 90%;
         max-width: 320px;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
     }
 }
