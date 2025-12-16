@@ -11,20 +11,15 @@ nav {
     background: #020617;
     padding: 16px 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-nav a {
+.logo {
+    font-size: 18px;
+    font-weight: 600;
     color: #38bdf8;
-    margin-left: 22px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-nav a:hover {
-    color: #0ea5e9;
 }
 
 /* ===== LAYOUT ===== */
@@ -37,16 +32,74 @@ nav a:hover {
 /* ===== HERO ===== */
 .hero {
     text-align: center;
-    padding: 90px 20px;
+    padding: 100px 20px;
 }
 
 .hero h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: 44px;
+    margin-bottom: 12px;
 }
 
 .hero p {
     color: #94a3b8;
+    font-size: 16px;
+}
+
+/* ===== CENTER UPLOAD BUTTON ===== */
+.upload-btn {
+    display: inline-block;
+    margin-top: 38px;
+    padding: 16px 46px;
+    background: #38bdf8;
+    color: #020617;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 34px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.06);
+}
+
+/* ===== NAV CARDS ===== */
+.nav-cards {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 34px;
+    flex-wrap: wrap;
+}
+
+/* ===== NAV CARD ===== */
+.nav-card {
+    width: 250px;
+    background: linear-gradient(145deg, #020617, #020617dd);
+    padding: 28px;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #e5e7eb;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-card h3 {
+    margin-bottom: 10px;
+    color: #38bdf8;
+    font-size: 20px;
+}
+
+.nav-card p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.nav-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 22px 55px rgba(56,189,248,0.35);
 }
 
 /* ===== PAGE TITLE ===== */

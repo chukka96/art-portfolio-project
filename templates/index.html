@@ -1,9 +1,20 @@
-{% extends "base.html" %}
-{% block content %}
-
 <div class="hero">
     <h1>Design Meets Cloud</h1>
     <p>Art Portfolio built with Python & Microsoft Azure</p>
-</div>
 
-{% endblock %}
+    <!-- CENTER UPLOAD BUTTON -->
+    <a href="/upload" class="upload-btn">Upload Artwork</a>
+
+    <!-- HOME & GALLERY CARDS -->
+    <div class="nav-cards">
+        <a href="/" class="nav-card">
+            <h3>🏠 Home</h3>
+            <p>Return to landing page</p>
+        </a>
+
+        <a href="/gallery" class="nav-card">
+            <h3>🖼️ Gallery</h3>
+            <p>View uploaded artworks</p>
+        </a>
+    </div>
+</div>
