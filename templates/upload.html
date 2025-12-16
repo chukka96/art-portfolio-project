@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Upload Artwork</h1>
+<div class="hero">
+    <h1>Upload Artwork</h1>
 
-<form method="POST" enctype="multipart/form-data" class="upload-form">
-    <input type="file" name="file" required>
-    <button type="submit">Upload</button>
-</form>
+    <form class="upload-form" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
 
-<p class="note">
-JPG / PNG → Posters<br>
-PDF → Certifications<br>
-MP4 → Edits
-</p>
+    <div class="note">
+        JPG / PNG → Posters<br>
+        PDF → Certifications<br>
+        MP4 → Edits
+    </div>
+
+    <!-- NAVIGATION CARDS -->
+    <div class="nav-cards" style="margin-top:60px;">
+        <a href="/" class="nav-card">
+            <h3>🏠 Home</h3>
+            <p>Return to landing page</p>
+        </a>
+
+        <a href="/gallery" class="nav-card">
+            <h3>🖼️ Gallery</h3>
+            <p>View uploaded artworks</p>
+        </a>
+    </div>
+</div>
 
 {% endblock %}
